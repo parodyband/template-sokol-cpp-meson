@@ -29,10 +29,10 @@ static void init(void) {
 
     /* a vertex buffer with 3 vertices */
     float vertices[] = {
-        // positions
-        -0.5f, -0.5f, 0.0f,     // bottom left
-        0.5f, -0.5f, 0.0f,      // bottom right
-        0.0f,  0.5f, 0.0f       // top
+        // positions            // colors
+        -0.5f, -0.5f, 0.0f,     1.0f, 0.0f, 0.0f, 1.0f,  // bottom left - red
+         0.5f, -0.5f, 0.0f,     0.0f, 1.0f, 0.0f, 1.0f,  // bottom right - green
+         0.0f,  0.5f, 0.0f,     0.0f, 0.0f, 1.0f, 1.0f   // top - blue
     };
     
     sg_buffer_desc buf_desc = {};
@@ -45,6 +45,7 @@ static void init(void) {
     sg_pipeline_desc pip_desc = {};
     pip_desc.shader = shd;
     pip_desc.layout.attrs[ATTR_simple_position].format = SG_VERTEXFORMAT_FLOAT3;
+    pip_desc.layout.attrs[ATTR_simple_color0].format = SG_VERTEXFORMAT_FLOAT4;
     pip_desc.label = "triangle-pipeline";
     state.pip = sg_make_pipeline(&pip_desc);
 
