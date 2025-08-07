@@ -43,7 +43,7 @@ def compile_shader(input_file, output_file):
         return False
     
     # Command for compiling shaders with modern shader languages
-    # glsl430 - Desktop OpenGL 4.3
+    # glsl410 - Desktop OpenGL 4.1 (max for macOS)
     # glsl300es - OpenGL ES 3.0 / WebGL2
     # hlsl5 - Direct3D 11
     # metal_macos - macOS Metal
@@ -52,7 +52,7 @@ def compile_shader(input_file, output_file):
         str(shdc),
         "--input", str(input_file),
         "--output", str(output_file),
-        "--slang", "glsl430:glsl300es:hlsl5:metal_macos:wgsl",
+        "--slang", "glsl410:glsl300es:hlsl5:metal_macos:wgsl",
         "--format", "sokol"
     ]
     

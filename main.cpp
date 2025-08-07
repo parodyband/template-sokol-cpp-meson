@@ -1,5 +1,9 @@
 #define SOKOL_IMPL
-#define SOKOL_GLCORE
+#ifdef __APPLE__
+    #define SOKOL_METAL
+#else
+    #define SOKOL_GLCORE
+#endif
 #define SOKOL_WIN32_FORCE_MAIN
 #include "sokol_app.h"
 #include "sokol_gfx.h"

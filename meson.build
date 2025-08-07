@@ -47,11 +47,19 @@ if compile_shaders_enabled
     sokol_meson_sources += shader_sources
 endif
 
+# Platform-specific compiler arguments
+cpp_args = ['-Wno-unknown-pragmas']
+
+# On macOS, we need to compile as Objective-C++ because Sokol includes Cocoa headers
+if host_machine.system() == 'darwin'
+    cpp_args += ['-x', 'objective-c++']
+endif
+
 sokol_meson = executable(
         'sokol_meson',
         sokol_meson_sources,
         dependencies: [fmt_dep, sokol_dep],
-        cpp_args: ['-Wno-unknown-pragmas'],
+        cpp_args: cpp_args,
         include_directories: include_directories('shaders/compiled', is_system: false)
 )
 
