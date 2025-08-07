@@ -1,0 +1,1 @@
+option('compile_shaders', type: 'boolean', value: true, description: 'Compile shaders during build')

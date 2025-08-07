@@ -1,0 +1,7 @@
+[wrap-git]
+directory = sokol
+url = https://github.com/floooh/sokol.git
+revision = master
+
+[provide]
+sokol = sokol_dep

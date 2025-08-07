@@ -1,0 +1,79 @@
+# Build directories
+build/
+builddir/
+build-*/
+out/
+
+# Compiled shaders
+shaders/compiled/
+
+# Meson subprojects - downloaded content
+subprojects/fmt*/
+subprojects/glfw*/
+subprojects/sokol/*
+!subprojects/sokol/meson.build
+subprojects/sokol-tools-bin/*
+!subprojects/sokol-tools-bin/meson.build
+subprojects/packagecache/
+
+# Meson wrap redirect files
+subprojects/*.wrap.redirect
+
+# Compiled binaries
+*.exe
+*.dll
+*.so
+*.dylib
+*.a
+*.lib
+*.o
+*.obj
+
+# IDE and editor files
+# .vscode/  # Uncomment to ignore VS Code settings
+.idea/
+*.swp
+*.swo
+*~
+# .clangd  # Uncomment to ignore clangd config
+.cache/
+compile_commands.json
+.ccls-cache/
+
+# Visual Studio
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+.vs/
+x64/
+x86/
+[Dd]ebug/
+[Rr]elease/
+
+# CLion
+cmake-build-*/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Python cache (from meson/scripts)
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Backup files
+*.bak
+*.backup
+*.old
+
+# Log files
+*.log
+
+# Core dumps
+core
+core.*
+vgcore.*

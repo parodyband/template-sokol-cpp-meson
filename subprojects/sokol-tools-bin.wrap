@@ -1,0 +1,7 @@
+[wrap-git]
+directory = sokol-tools-bin
+url = https://github.com/floooh/sokol-tools-bin.git
+revision = master
+
+[provide]
+sokol-tools-bin = sokol_tools_bin_dep

@@ -1,0 +1,7 @@
+CompileFlags:
+  Add:
+    - -Ishaders/compiled
+    - -Isubprojects/sokol
+    - -Isubprojects/fmt-11.2.0/include
+    - -xc++
+    - -std=c++20
