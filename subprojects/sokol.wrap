@@ -2,6 +2,7 @@
 directory = sokol
 url = https://github.com/floooh/sokol.git
 revision = master
+patch_directory = sokol
 
 [provide]
 sokol = sokol_dep

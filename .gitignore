@@ -10,11 +10,11 @@ shaders/compiled/
 # Meson subprojects - downloaded content
 subprojects/fmt*/
 subprojects/glfw*/
-subprojects/sokol/*
-!subprojects/sokol/meson.build
-subprojects/sokol-tools-bin/*
-!subprojects/sokol-tools-bin/meson.build
+subprojects/sokol/
+subprojects/sokol-tools-bin/
 subprojects/packagecache/
+# Keep the packagefiles for patches
+!subprojects/packagefiles/
 
 # Meson wrap redirect files
 subprojects/*.wrap.redirect
