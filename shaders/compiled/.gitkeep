@@ -1,0 +1,2 @@
+# This file ensures the compiled/ directory exists in git
+# Actual compiled shader headers (*.h) are git-ignored

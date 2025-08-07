@@ -5,7 +5,8 @@ build-*/
 out/
 
 # Compiled shaders
-shaders/compiled/
+shaders/compiled/*
+!shaders/compiled/.gitkeep
 
 # Meson subprojects - downloaded content
 subprojects/fmt*/
