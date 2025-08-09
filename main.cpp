@@ -9,7 +9,7 @@
 #include "sokol_gfx.h"
 #include "sokol_glue.h"
 #include "sokol_log.h"
-#include "triangle.h"
+#include "shaders/compiled/triangle.h"
 
 /* application state */
 static struct {
@@ -55,7 +55,7 @@ static void init(void) {
     state.pass_action.colors[0].clear_value = {0.2f, 0.3f, 0.3f, 1.0f};
 }
 
-void frame(void) {
+void frame() {
     sg_pass pass = {};
     pass.action = state.pass_action;
     pass.swapchain = sglue_swapchain();
@@ -67,7 +67,7 @@ void frame(void) {
     sg_commit();
 }
 
-void cleanup(void) {
+void cleanup() {
     sg_shutdown();
 }
 

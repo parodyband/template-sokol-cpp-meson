@@ -17,14 +17,14 @@ git clone <your-repo-url>
 cd sokol_meson
 
 # Setup build directory (Meson will auto-download all dependencies)
-meson setup build
+meson setup buildDir
 
 # Compile (this also compiles shaders automatically)
-meson compile -C build
+meson compile -C buildDir
 
 # Run the triangle demo
-./build/sokol_meson.exe  # Windows
-./build/sokol_meson       # Linux/macOS
+./buildDir/sokol_meson.exe  # Windows
+./buildDir/sokol_meson      # Linux/macOS
 ```
 
 ## Features
@@ -50,7 +50,7 @@ sokol_meson/
 │   ├── sokol/                  # Sokol headers (git-ignored)
 │   ├── sokol-tools-bin/        # Shader compiler (git-ignored)
 │   └── fmt-*/                  # fmt library (git-ignored)
-└── build/                      # Build output (git-ignored)
+└── buildDir/                   # Build output (git-ignored)
 ```
 
 ## Dependencies
@@ -61,7 +61,7 @@ All dependencies are automatically managed by Meson through wrap files:
 - **[fmt](https://github.com/fmtlib/fmt)** - Modern C++ formatting library
 - **[sokol-tools-bin](https://github.com/floooh/sokol-tools-bin)** - Shader cross-compiler
 
-These are downloaded automatically when you run `meson setup build`.
+These are downloaded automatically when you run `meson setup buildDir`.
 
 ## Shader System
 
@@ -114,7 +114,7 @@ To get proper code completion and error checking in your IDE:
 
 ```bash
 # Generate compile_commands.json for IDE/linter
-cd build && ninja -t compdb > ../compile_commands.json && cd ..
+cd buildDir && ninja -t compdb > ../compile_commands.json && cd ..
 ```
 
 This file is git-ignored but essential for IDE features like:
@@ -132,15 +132,15 @@ This file is git-ignored but essential for IDE features like:
 
 ```bash
 # Standard build
-meson compile -C build
+meson compile -C buildDir
 
 # Clean rebuild
-meson setup build --wipe
-meson compile -C build
+meson setup buildDir --wipe
+meson compile -C buildDir
 
 # Release build
-meson setup buildrelease --buildtype=release
-meson compile -C buildrelease
+meson setup buildDirRelease --buildtype=release
+meson compile -C buildDirRelease
 ```
 
 ## Controls
@@ -158,5 +158,5 @@ meson compile -C buildrelease
 - Reload your IDE window
 
 ### Build Errors
-- Run `meson setup build --wipe` for a clean configuration
+- Run `meson setup buildDir --wipe` for a clean configuration
 - Ensure all subprojects downloaded: `meson subprojects download`

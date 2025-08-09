@@ -11,12 +11,12 @@ import subprocess
 from pathlib import Path
 
 def get_shdc_path():
-    """Get the path to sokol-shdc based on the platform"""
-    # When run from build directory by Meson, we need to go up one level
-    if Path.cwd().name == 'build':
-        base_path = Path("../subprojects/sokol-tools-bin/bin")
-    else:
-        base_path = Path("../subprojects/sokol-tools-bin/bin")
+    """Get the path to sokol-shdc based on the platform.
+    Resolve from project root independent of current working directory.
+    """
+    script_dir = Path(__file__).resolve().parent
+    project_root = script_dir.parent
+    base_path = project_root / "subprojects" / "sokol-tools-bin" / "bin"
     
     system = platform.system().lower()
     machine = platform.machine().lower()
@@ -39,7 +39,7 @@ def compile_shader(input_file, output_file):
     
     if not shdc.exists():
         print(f"Error: sokol-shdc not found at {shdc}")
-        print("Make sure to run 'meson setup build' first to download tools")
+        print("Make sure to run 'meson setup buildDir' first to download tools")
         return False
     
     # Command for compiling shaders with modern shader languages
@@ -71,16 +71,10 @@ def compile_shader(input_file, output_file):
 
 def main():
     """Main function - compiles all shaders in the shaders directory"""
-    
-    # Since this script is now IN the shaders directory, adjust paths
-    # When run from build directory by Meson
-    if Path.cwd().name == 'build':
-        shader_dir = Path("../shaders")
-        output_dir = Path("../shaders/compiled")
-    else:
-        # If run directly from shaders directory
-        shader_dir = Path(".")
-        output_dir = Path("compiled")
+    # Always resolve paths relative to this script, not the working directory
+    script_dir = Path(__file__).resolve().parent
+    shader_dir = script_dir
+    output_dir = script_dir / "compiled"
     
     # Create directories if they don't exist
     shader_dir.mkdir(exist_ok=True)
